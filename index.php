@@ -4,12 +4,6 @@ session_start();
 include_once('connect.php');
 
 
-$bdd = mysqli_connect(BDHOST, BDUSER, BDPASSWORD, BDNAME);
-
-if(mysqli_connect_error()){
-    print('Connexion à la base de donnée: KO'.mysqli_connect_error());
-    exit();
-}
 
 /*$resultat = mysqli_query($bdd, 'select * from Type_de_livre');
 echo 'Il y a '.mysqli_num_rows($resultat). ' entrées dans la base de données <br/>';
@@ -19,8 +13,8 @@ while($donnees = mysqli_fetch_assoc($resultat)){
 echo "<br/><a href='ajouter.php'>Ajouter</a>"
 */
 
-$sql = 'SELECT id, label, FROM tbl_type;';
-$result = mysqli_query($bd,$slq);
+$sql = 'SELECT Id, libelle FROM Type_du_livre;';
+$result = mysqli_query($bd,$sql);
 
 include_once('close.php');
 ?>
@@ -39,23 +33,24 @@ include_once('close.php');
 <div class="container">
 <table class="table">
     <thead>
-      <th>ID</th>
-      <th>Libellé</th>
+      <th>Id</th>
+      <th>Libelle</th>
       <th>Action</th>
     </thead>
 <?php
 foreach($result as $type){
 ?>   
  <tr>
- <td><?php print($type['id']); ?></td>
- <td><?php print($type['label']); ?></td>
- <td><a href="detailphp?id=<?php print($type['ID']); ?>">voir</a> Modifier Supprimer </td>
+ <td><?php print($type['Id']); ?></td>
+ <td><?php print($type['libelle']); ?></td>
+ <td><a href="detail.php?Id=<?php print($type['Id']); ?>">voir</a> Modifier Supprimer </td>
  </tr>
-}
+ 
+<?php } ?>
 
 
 </table>
 <div>
-
+<a href="ajouter.php">Ajouter</a>
 </body>
 </html>
