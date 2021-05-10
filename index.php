@@ -43,7 +43,7 @@ foreach($result as $type){
  <tr>
  <td><?php print($type['Id']); ?></td>
  <td><?php print($type['libelle']); ?></td>
- <td><a href="detail.php?Id=<?php print($type['Id']); ?>">voir</a> Modifier Supprimer </td>
+ <td><a href="detail.php?Id=<?php print($type['Id']); ?>">voir</a> <a href="edit.php?Id=<?php print($type['Id']); ?> ">Modifier</a> Supprimer </td>
  </tr>
  
 <?php } ?>
